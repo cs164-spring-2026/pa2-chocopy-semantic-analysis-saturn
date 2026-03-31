@@ -15,6 +15,10 @@ public class StudentAnalysis {
             return program;
         }
 
+        // Pass 1: build class inheritance graph and validate rule 4.
+        ClassHierarchyBuilder hierarchy = new ClassHierarchyBuilder(program.errors);
+        hierarchy.build(program);
+
         DeclarationAnalyzer declarationAnalyzer =
             new DeclarationAnalyzer(program.errors);
         program.dispatch(declarationAnalyzer);
